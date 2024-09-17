@@ -1,3 +1,5 @@
+#include <cmath>
+
 class Solution {
 public:
     int maxArea(vector<int>& height)
@@ -14,14 +16,17 @@ public:
         }
         for(iter = height_adjust.begin(); iter != height_adjust.end(); iter++)
         {
-            if(abs((*iter).second - 0) > abs((*iter).second - (index_adjust.size() - 1)))
+            if((*iter).second >int(abs((*iter).second - (index_adjust.size() - 1))))
             {
-                multiplication = index_adjust[0] * (*iter).first;
+                multiplication = (*iter).second * (*iter).first;
+
             }
             else
             {
-                multiplication = index_adjust[index_adjust.size() - 1] * (*iter).first;
+                multiplication = abs((*iter).second - (index_adjust.size() - 1)) * (*iter).first;
             }
+            index_adjust.erase(*iter.second);
+
             if( multiplication > super_multiplication)
             {
                 super_multiplication = multiplication;
