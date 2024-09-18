@@ -12,23 +12,24 @@ public:
             height_adjust.emplace(height[i], i);
             index_adjust.emplace(i, height[i]);
         }
+
         for(iter = height_adjust.begin(); iter != height_adjust.end(); iter++)
         {
-            if((*iter).second > static_cast<int>(abs((*iter).second - static_cast<int>((index_adjust.size() - 1)))))
-            {
-                multiplication = (*iter).second * (*iter).first;
+            auto lastElement = index_adjust.end();
+            int lastKey = lastElement->first;
 
+            auto firstElement = index_adjust.begin();
+            int firstKey = firstElement->first;
+
+            if(static_cast<long long>(abs(((*iter).second - firstKey))) > (static_cast<int>(abs((*iter).second - lastKey))))
+            {
+                multiplication = static_cast<long long>(abs(((*iter).second - firstKey))) * (*iter).first;
             }
             else
             {
-                multiplication = static_cast<long>(abs((*iter).second - static_cast<long>((index_adjust.size() - 1)))) * (*iter).first;
+                multiplication = static_cast<long>(abs((*iter).second - lastKey)) * (*iter).first;
             }
             index_adjust.erase((*iter).second);
-
-            // auto it = index_adjust.find((*iter).second);
-            // if (it != index_adjust.end()) {
-            //     index_adjust.erase(it);
-            // }
 
             if( multiplication > super_multiplication)
             {
