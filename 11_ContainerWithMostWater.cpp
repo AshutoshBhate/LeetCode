@@ -13,7 +13,7 @@ public:
             index_adjust.emplace(i, height[i]);
         }
 
-        for(iter = height_adjust.begin(); iter != height_adjust.end(); iter++)
+        for(auto iter = height_adjust.begin(); iter != height_adjust.end(); iter++)
         {
             auto lastElement = index_adjust.rbegin();
             int lastKey = lastElement->first;
