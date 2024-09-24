@@ -2,6 +2,10 @@ class Solution {
 public:
     int maxArea(vector<int>& height)
     {
+        cin.tie(nullptr);
+        cout.tie(nullptr);
+        ios::sync_with_stdio(false);
+
         multimap<int, int> height_adjust;
         multimap<int, int> index_adjust;
         multimap<int, int> :: iterator iter;
@@ -13,7 +17,7 @@ public:
             index_adjust.emplace(i, height[i]);
         }
 
-        for(auto iter = height_adjust.begin(); iter != height_adjust.end(); iter++)
+        for(iter = height_adjust.begin(); iter != height_adjust.end(); iter++)
         {
             auto lastElement = index_adjust.rbegin();
             int lastKey = lastElement->first;
