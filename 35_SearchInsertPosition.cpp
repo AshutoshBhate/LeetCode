@@ -2,17 +2,29 @@ class Solution {
 public:
     int searchInsert(vector<int>& nums, int target)
     {
-        auto it = find(nums.begin(), nums.end(), target);
-        if(it != nums.end())
+        cin.tie(nullptr);
+        cout.tie(nullptr);
+        ios::sync_with_stdio(false);
+
+        int left = 0, right = nums.size() - 1;
+        int middle;
+
+        while(left <= right)
         {
-            return (it - nums.begin());
+            middle = (left + right)/2;
+            if(nums[middle] == target)
+            {
+                return middle;
+            }
+            if(nums[middle] > target)
+            {
+                right = middle - 1;
+            }
+            else
+            {
+                left = middle + 1;
+            }
         }
-        else
-        {
-            nums.push_back(target);
-            sort(nums.begin(), nums.end());
-            auto iter = find(nums.begin(), nums.end(), target);
-            return (iter - nums.begin());
-        }
+        return left;        //Left is already pointing at the position where target must be inserted
     }
 };
