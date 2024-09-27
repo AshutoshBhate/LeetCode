@@ -1,48 +1,26 @@
-//Classic Solution with multimaps and reverse_iterators
-
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target)
     {
+        cin.tie(nullptr);
+        cout.tie(nullptr);
+        ios::sync_with_stdio(0);
+        
         vector<int> answer;
-        multimap<int, int> myMap;
-        multimap<int, int> :: iterator iter;
-        multimap<int, int> :: reverse_iterator reviter;
+        vector<int> :: iterator lower, upper;
 
-        for(int i = 0; i < nums.size(); i++)
-        {
-            myMap.emplace(nums[i], i);
-        }
+        lower = lower_bound(nums.begin(), nums.end(), target);      //LowerBound Implememntation
+        upper = upper_bound(nums.begin(), nums.end(), target);      //UpperBound Implementation
 
-        for(iter = myMap.begin(); iter != myMap.end(); iter++)
+        if (lower == nums.end() || *lower != target)
         {
-            if((*iter).first == target)
-            {
-                answer.push_back((*iter).second);
-                break;
-            }
+            return {-1, -1};
         }
 
-        for(reviter = myMap.rbegin(); reviter != myMap.rend(); reviter--)
-        {
-            if((*reviter).first == target)
-            {
-                answer.push_back((*reviter).second);
-                break;
-            }
-        }
-        if(answer.empty())
-        {
-            vector<int> fail = {-1, -1};
-            return fail;
-        }
-        else
-        {
-            return answer;
-        }
+        answer.push_back(lower - nums.begin());
+        answer.push_back(upper - nums.begin() - 1);
+
+        return answer;
+        
     }
 };
-
-
-//Optimal Solution
-
