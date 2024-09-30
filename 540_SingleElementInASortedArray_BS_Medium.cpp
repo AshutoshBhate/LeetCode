@@ -12,8 +12,8 @@ public:
         {
             mid = (left + right) / 2;
             
-            if(mid == 0 || mid == nums.size() - 1)
-            {
+            if(mid == 0 || mid == nums.size() - 1)      // Check for boundary conditions where mid might be 0 or
+            {                                           // extreme element in case of single or two element array
                 return nums[mid];
             }
 
