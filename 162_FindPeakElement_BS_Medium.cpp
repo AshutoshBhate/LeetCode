@@ -76,6 +76,7 @@ public:
         ios::sync_with_stdio(false);
 
         int n = nums.size();
+        
         if (n == 1)
         {
             return 0;
