@@ -5,6 +5,7 @@ public:
         cin.tie(nullptr);
         cout.tie(nullptr);
         ios::sync_with_stdio(false);
+        
         vector<int>arr;
 
         int top=0, bottom=matrix.size()-1, left=0, right=matrix[0].size()-1;
