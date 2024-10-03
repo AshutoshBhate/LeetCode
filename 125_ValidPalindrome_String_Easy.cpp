@@ -31,23 +31,7 @@ public:
             left++;
             right--;
         }
+        
         return true;
-
-
-        //while(left < right)
-        //{
-        //    // Skip non-alphabetic characters
-        //    while(left < right && !isalnum(s[left])) left++;
-        //    while(left < right && !isalnum(s[right])) right--;
-        //
-        //     // Compare alphabetic characters, case-insensitive
-        //     if(tolower(s[left]) != tolower(s[right]))
-        //     {
-        //         return false;
-        //     }
-        //     left++;
-        //     right--;
-        // }
-        // return true;
     }
 };
