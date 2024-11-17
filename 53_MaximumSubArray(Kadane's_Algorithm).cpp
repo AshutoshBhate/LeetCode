@@ -2,10 +2,11 @@ class Solution {
 public:
     int maxSubArray(vector<int>& nums)
     {
-        long count =0, max_count = 0;
+        long count = 0, max_count = 0;
         vector<long> hash_array(nums.size());
 
         copy(nums.begin(), nums.end(), hash_array.begin());
+        
         sort(hash_array.begin(), hash_array.end());
         if(hash_array[hash_array.size() - 1] < 0)
         {
