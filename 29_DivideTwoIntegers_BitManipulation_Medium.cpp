@@ -29,22 +29,24 @@ public:
             {
                 count++;
             }
+
             ans += 1 << count;
             dividend_new -= (divisor_new << count);
         }
+
         if(ans == (INT_MAX) && sign == true)
         {
             return INT_MAX;
         }
         if(ans == (INT_MAX) && sign == false)
         {
-            return -1 * INT_MAX;
+            return (-1 * INT_MAX);
         }
         if(ans == INT_MIN && sign == true)
         {
             return INT_MAX;
         }
-        return sign ? ans : (-1 * ans);
 
+        return sign ? ans : (-1 * ans);
     }
 };
