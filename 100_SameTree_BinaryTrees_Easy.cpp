@@ -14,15 +14,20 @@ public:
     bool isSameTree(TreeNode* p, TreeNode* q)
     {
         // Step 1: If both nodes are null, the trees are identical at this point.
-        if (p == nullptr && q == nullptr)
-        {
-            return true;
-        }
+        // if (p == nullptr && q == nullptr)
+        // {
+        //     return true;
+        // }
 
-        // Step 2: If one node is null and the other is not, the trees are not the same.
-        if (p == nullptr || q == nullptr)
+        // // Step 2: If one node is null and the other is not, the trees are not the same.
+        // if (p == nullptr || q == nullptr)
+        // {
+        //     return false;
+        // }
+
+        if(p == NULL || q == NULL)
         {
-            return false;
+            return (p == q);
         }
 
         // Step 3: Check if the current nodes have the same value.
