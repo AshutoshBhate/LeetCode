@@ -5,23 +5,23 @@ using namespace std;
 
 bool possible(vector<int> &arr, int day, int m, int k)
 {
-    int cnt = 0;
-    int noOfB = 0;
+    int count = 0;
+    int no_of_bouquets = 0;
     // count the number of bouquets:
     for (int i = 0; i < arr.size(); i++)
     {
         if (arr[i] <= day)
         {
-            cnt++;
+            count++;
         }
         else
         {
-            noOfB += (cnt / k);
-            cnt = 0;
+            no_of_bouquets += (count / k);
+            count = 0;
         }
     }
-    noOfB += (cnt / k);
-    return noOfB >= m;
+    no_of_bouquets += (count / k);
+    return no_of_bouquets >= m;
 }
 
 int roseGarden(vector<int> arr, int k, int m)
@@ -77,7 +77,7 @@ public:
     {
         for(int i = 0; i < array_1.size(); i++)
         {
-            min_number = min(min_number, array_1[i]);
+            min_number = min(min_number, array_1[i]);       //Don't redeclare min_number inside
         }
 
         return min_number;
