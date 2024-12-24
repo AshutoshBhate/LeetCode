@@ -36,13 +36,16 @@ public:
         long long low = 1, high = findMax(piles);
 
         // Apply binary search:
-        while (low <= high) {
+        while (low <= high)
+        {
             long long mid = (low + high) / 2;
             long long totalH = calculateTotalHours(piles, mid);
-            if (totalH <= h) {
+            if (totalH <= h)
+            {
                 high = mid - 1;
             }
-            else {
+            else
+            {
                 low = mid + 1;
             }
         }
