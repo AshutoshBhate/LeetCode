@@ -4,6 +4,7 @@ public:
     {
         int x = nums.size();
         vector<int> next_greater_element(2 * x, -1);
+        
         stack<int> myStack;
         vector<int> answer;
 
