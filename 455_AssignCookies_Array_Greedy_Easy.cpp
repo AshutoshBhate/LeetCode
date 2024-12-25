@@ -41,18 +41,18 @@ public:
         sort(s.begin(), s.end());
         sort(g.begin(), g.end());
 
-        int i = 0, j = 0, count = 0;
-        while(i < g.size() && j < s.size())
+        int greed_pointer = 0, satisfy_pointer = 0, count = 0;
+        while(greed_pointer < g.size() && satisfy_pointer < s.size())
         {
-            if(g[i] <= s[j])
+            if(g[greed_pointer] <= s[satisfy_pointer])
             {
-                i++;
-                j++;
+                greed_pointer++;
+                satisfy_pointer++;
                 count++;
             }
             else
             {
-                j++;
+                satisfy_pointer++;
             }
         }
 
