@@ -3,7 +3,7 @@ public:
     vector<int> nextGreaterElements(vector<int>& nums)
     {
         int x = nums.size();
-        vector<int> nge(2 * x, -1);
+        vector<int> next_greater_element(2 * x, -1);
         stack<int> myStack;
         vector<int> answer;
 
@@ -20,7 +20,7 @@ public:
             }
             if (!myStack.empty())
             {
-                nge[i] = myStack.top();
+                next_greater_element[i] = myStack.top();
             }
             
             myStack.push(nums[i]);
@@ -28,7 +28,7 @@ public:
 
         for(int i = 0; i < x; i++)
         {
-            answer.push_back(nge[i]);
+            answer.push_back(next_greater_element[i]);
         }
 
         return answer;
