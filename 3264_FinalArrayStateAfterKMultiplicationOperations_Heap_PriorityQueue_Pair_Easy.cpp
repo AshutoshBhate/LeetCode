@@ -32,11 +32,11 @@ public:
         }
 
         // Sort modified elements based on their original indices
-        sort(modifiedElements.begin(), modifiedElements.end(),
-            [](const pii& a, const pii& b)
-            {
-                return a.second < b.second;
-            });
+        sort(modifiedElements.begin(), modifiedElements.end(), [](const pii& a, const pii& b)
+                {
+                    return a.second < b.second;
+                }
+            );
 
         // Extract the values in the correct order
         for (int i = 0; i < modifiedElements.size(); i++)
