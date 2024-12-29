@@ -1,3 +1,5 @@
+//BFS Approach:
+
 class Solution {
 public:
     void BFS(int start, vector<vector<int>>& isConnected, vector<int>& visit_array)
@@ -44,3 +46,38 @@ public:
         return count;
     }
 };
+
+//DFS Approach:
+
+class Solution {
+public:
+    void DFS(int node, vector<vector<int>>& isConnected, vector<int>& visit_array)
+    {
+        visit_array[node] = 1;
+        for (int j = 0; j < isConnected.size(); j++)
+        {
+            if (isConnected[node][j] == 1 && !visit_array[j])
+            {
+                DFS(j, isConnected, visit_array);
+            }
+        }
+    }
+
+    int findCircleNum(vector<vector<int>>& isConnected)
+    {
+        vector<int> visit_array(isConnected.size(), 0);
+        int count = 0;
+
+        for (int i = 0; i < isConnected.size(); i++)
+        {
+            if (!visit_array[i])
+            {
+                count++;
+                DFS(i, isConnected, visit_array);
+            }
+        }
+
+        return count;
+    }
+};
+
