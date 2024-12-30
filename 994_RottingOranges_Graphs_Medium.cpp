@@ -37,6 +37,7 @@ class Solution{
                     {
                         visit_array[i][j] = 0;
                     }
+                    
                     //Count fresh oranges
                     if(grid[i][j] == 1)
                     {
