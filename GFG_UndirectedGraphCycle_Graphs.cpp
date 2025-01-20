@@ -58,48 +58,48 @@ class Solution {
 
 class Solution {
   private:
-    // Helper function to detect a cycle using BFS
+    //Helper function to detect a cycle using BFS
     bool detect(int src, vector<vector<int>>& adj, vector<int>& vis)
     {
         vis[src] = 1; 
-        // Store <source node, parent node>
+        //Store <source node, parent node>
         queue<pair<int, int>> q; 
         q.push({src, -1});
 
-        // Traverse until queue is not empty
+        //Traverse until queue is not empty
         while (!q.empty())
         {
             int node = q.front().first; 
             int parent = q.front().second; 
             q.pop(); 
         
-            // Go to all adjacent nodes
+            //Go to all adjacent nodes
             for (auto adjacentNode : adj[node])
             {
-                // If adjacent node is unvisited
+                //If adjacent node is unvisited
                 if (!vis[adjacentNode])
                 {
                     vis[adjacentNode] = 1; 
                     q.push({adjacentNode, node}); 
                 }
-                // If adjacent node is visited and is not its own parent
+                //If adjacent node is visited and is not its own parent
                 else if (parent != adjacentNode)
                 {
-                    // Cycle detected
+                    //Cycle detected
                     return true; 
                 }
             }
         }      
-        // No cycle found
+        //No cycle found
         return false; 
     }
 
   public:
-    // Function to detect cycle in an undirected graph
+    //Function to detect cycle in an undirected graph
     bool isCycle(vector<vector<int>>& adj)
     {
-        int V = adj.size(); // Number of vertices
-        // Initialize all nodes as unvisited
+        int V = adj.size(); //Number of vertices
+        //Initialize all nodes as unvisited
         vector<int> vis(V, 0);
         
         for (int i = 0; i < V; i++)
