@@ -1,4 +1,4 @@
-//Striver Solution:
+//Striver Solution: BFS
 
 class Solution {
   private: 
@@ -54,7 +54,7 @@ class Solution {
     }
 };
 
-//GFG Solution:
+//GFG Solution: BFS
 
 class Solution {
   private:
@@ -111,6 +111,99 @@ class Solution {
             }
         }
         return false; 
+    }
+};
+
+//Striver Solution: DFS
+
+class Solution
+{
+  private: 
+    bool dfs(int node, int parent, int vis[], vector<int> adj[])
+    {
+        vis[node] = 1; 
+        //Visit adjacent nodes
+        for(auto adjacentNode: adj[node])
+        {
+            //Unvisited adjacent node
+            if(!vis[adjacentNode])
+            {
+                if(dfs(adjacentNode, node, vis, adj) == true)
+                {
+                    return true;
+                } 
+            }
+            //Visited node but not a parent node
+            else if(adjacentNode != parent)
+            {
+                return true;
+            }
+        }
+
+        return false; 
+    }
+  public:
+    //Function to detect cycle in an undirected graph.
+    bool isCycle(int V, vector<int> adj[])
+    {
+       int vis[V] = {0}; 
+       //For graph with connected components 
+       for(int i = 0;i<V;i++)
+       {
+           if(!vis[i])
+           {
+                if(dfs(i, -1, vis, adj) == true) return true; 
+           }
+       }
+
+       return false; 
+    }
+};
+
+//GFG Solution: DFS
+
+class Solution {
+  public:
+    bool dfs(int node, int parent, vector<int>& visited, vector<vector<int>>& adj)
+    {
+        visited[node] = 1;
+        
+        for(auto adjacentNode : adj[node])
+        {
+            if(!visited[adjacentNode])
+            {
+                if(dfs(adjacentNode, node, visited, adj) == true)
+                {
+                    return true;
+                }
+            }
+            else if(adjacentNode != parent)
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+  
+    //Function to detect cycle in an undirected graph.
+    bool isCycle(vector<vector<int>>& adj)
+    {
+        int no_of_nodes = adj.size();
+        vector<int> visited(no_of_nodes, 0);
+        
+        for(int i = 0; i < no_of_nodes; i++)
+        {
+            if(visited[i] == 0)
+            {
+                if(dfs(i, -1, visited, adj) == true)
+                {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
     }
 };
 
