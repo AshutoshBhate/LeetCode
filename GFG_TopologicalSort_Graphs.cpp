@@ -1,3 +1,5 @@
+//Topological Sort : DFS
+
 class Solution {
   public:
   
@@ -20,8 +22,8 @@ class Solution {
     vector<int> topologicalSort(vector<vector<int>>& adj)
     {
         vector<int> visited_array(adj.size(), 0);
-        
         stack<int> st;
+
         for(int i = 0; i <  adj.size(); i++)
         {
             if(!visited_array[i])
@@ -38,5 +40,54 @@ class Solution {
         }
         
         return DFS_Answer;
+    }
+};
+
+//Topological Sort : BFS(Kahn's Algorithm)
+
+class Solution {
+  public:
+    // Function to return list containing vertices in Topological order.
+    vector<int> topologicalSort(vector<vector<int>>& adj)
+    {
+        vector<int> inDegree(adj.size(), 0);
+        vector<int> TopoSort;
+        
+        for(int i = 0; i < adj.size(); i++)
+        {
+            for(auto iter : adj[i])
+            { 
+                inDegree[iter]++;
+            }
+        }
+        
+        queue<int> q;
+        
+        for(int i = 0; i < inDegree.size(); i++)
+        {
+            if(inDegree[i] == 0)
+            {
+                q.push(i);
+            }
+        }
+        
+        while(!q.empty())
+        {
+            int node = q.front();
+            TopoSort.push_back(node);
+            q.pop();
+            
+            for(auto it : adj[node])
+            {
+                inDegree[it]--;
+                if(inDegree[it] == 0)
+                {
+                    q.push(it);
+                }
+            }
+        }
+        
+        return TopoSort;
+        
     }
 };
