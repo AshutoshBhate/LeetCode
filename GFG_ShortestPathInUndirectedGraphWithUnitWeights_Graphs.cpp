@@ -31,10 +31,10 @@ class Solution{
         // Replace unreachable vertices (still 1e9) with -1
         for(int i = 0; i < V; i++)
         {
-                if(dist[i] == 1e9)
-                {
-                    dist[i] = -1;
-                }
+            if(dist[i] == 1e9)
+            {
+                dist[i] = -1;
+            }
         }
         
         return dist;
