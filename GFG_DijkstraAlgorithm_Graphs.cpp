@@ -17,9 +17,9 @@ class Solution {
             
             while(!pq.empty())
             {
-                pair<int, int> topPair = pq.top();
-                int d = topPair.first;
-                int node = topPair.second;
+                auto it = pq.top();
+                int d = it.first;
+                int node = it.second;
                 
                 pq.pop();
                 
@@ -32,10 +32,10 @@ class Solution {
                 //Adjaceny List : pair{neighboring node, weight}
     
                 // Explore the neighbors
-                for(auto edge : adj[node])
+                for(auto iter : adj[node])
                 {
-                    int adjacent_Node = edge.first;
-                    int edgeW = edge.second;
+                    int adjacent_Node = iter.first;
+                    int edgeW = iter.second;
                     
                     // Relaxation step
                     if(dist[node] + edgeW < dist[adjacent_Node])
