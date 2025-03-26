@@ -9,6 +9,9 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+ //Striver Solution:
+
 class Solution {
     public:
         TreeNode* insertIntoBST(TreeNode* root, int val)
@@ -54,4 +57,49 @@ class Solution {
     
             return root;
         }
-    };
+};
+
+//My Solution:
+
+class Solution {
+    public:
+        TreeNode* insertIntoBST(TreeNode* root, int val)
+        {
+            TreeNode* ActualRoot = root;
+            TreeNode* prev_node = NULL;
+            TreeNode* node = new TreeNode(val);
+    
+    
+            if(root == NULL)
+            {
+                TreeNode* newNode = new TreeNode(val);
+                return newNode;
+            }    
+    
+            while(root)
+            {
+                if(val > root -> val)
+                {
+                    prev_node = root;
+                    root = root -> right;
+                }
+                else if(val < root -> val)
+                {
+                    prev_node = root;
+                    root = root -> left;
+                }
+            }
+    
+            if(val > prev_node -> val)
+            {
+                prev_node -> right = node;
+    
+            }
+            else
+            {
+                prev_node -> left = node;
+            }
+    
+            return ActualRoot;
+        }
+};
