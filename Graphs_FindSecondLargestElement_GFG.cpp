@@ -1,7 +1,6 @@
 class Solution {
   public:
-    // Function returns the second
-    // largest elements
+    // Function returns the second largest elements
     int print2largest(vector<int> &arr) {
         sort(arr.begin(), arr.end());
         
