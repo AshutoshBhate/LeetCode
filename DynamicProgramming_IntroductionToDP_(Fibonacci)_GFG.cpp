@@ -8,12 +8,12 @@ class Solution {
       {
           if(n <= 1)
           {
-              return n;
+            return n;
           }
           
           if(dp[n] != -1)
           {
-              return dp[n];
+            return dp[n];
           }
           
           dp[n] = (topDownHelper(n - 1, dp) + topDownHelper(n - 2, dp)) % mod;
