@@ -10,7 +10,7 @@ class Solution {
     
             for (int i = index; i < candidates.size(); i++)
             {
-                if (i > index && candidates[i] == candidates[i - 1])
+                if (i > index && candidates[i] == candidates[i - 1]) //To consider the first element of the fresh recursion even if previous element prior (Which we aren't even considering) to first element turns out to be the same element
                 {
                     continue;
                 }
