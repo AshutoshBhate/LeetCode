@@ -1,3 +1,5 @@
+//Memoization:
+
 class Solution {
     public:
         int solveUtil(int ind, vector<int>& height, vector<int>& dp, int k)
@@ -37,4 +39,32 @@ class Solution {
             vector<int> dp(n, -1);  // Initialize memoization array
             return solveUtil(n - 1, arr, dp, k); // Start the recursion from the last index
         }
-    };
+};
+
+//Tabulation:
+
+class Solution {
+    public:
+        int minimizeCost(int k, vector<int>& height)
+        {
+            int n = height.size();
+            vector<int> dp(n, INT_MAX);
+
+            dp[0] = 0;  // Base case: cost to reach the first stone is 0
+            
+            for (int i = 1; i < n; i++)
+            {
+                for (int j = 1; j <= k; j++)
+                {
+                    if (i - j >= 0)
+                    {
+                        int jump = dp[i - j] + abs(height[i] - height[i - j]);
+                        dp[i] = min(dp[i], jump);
+                    }
+                }
+            }
+            
+            return dp[n - 1];  // Minimum cost to reach the last stone
+        }
+};
+    
