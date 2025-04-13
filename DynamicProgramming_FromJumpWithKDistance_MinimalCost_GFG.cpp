@@ -67,4 +67,8 @@ class Solution {
             return dp[n - 1];  // Minimum cost to reach the last stone
         }
 };
-    
+
+//Space Optimisation:
+
+//SC : O(N) -> O(K)
+
