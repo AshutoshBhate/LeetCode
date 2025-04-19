@@ -1,18 +1,45 @@
+//Memoization : 
+
 class Solution {
     public:
+        int helper(int m, int n, vector<vector<int>>& dp)
+        {  
+            if(m == 0 && n == 0)
+            {
+                return 1;
+            }
+            if(m < 0 || n < 0)
+            {
+                return 0;
+            }
+    
+            if(dp[m][n] != -1)
+            {
+                return dp[m][n];
+            }    
+    
+            int down = helper(m - 1, n, dp);
+            int right = helper(m, n - 1, dp);
+    
+            dp[m][n] = down + right;
+            return dp[m][n];
+        }
+    
         int uniquePaths(int m, int n)
         {
-            int a = m + n - 2;
-            int k = min(m - 1, n - 1);
+            vector<vector<int>>dp(m, vector<int>(n, -1));
     
-            long result = 1;
-    
-            for (int i = 0; i < k; ++i)
-            {
-                result = result * (a - i) / (i + 1);
-            }
-            
-            return static_cast<int>(result);
+            return helper(m - 1, n - 1, dp);
         }
-    };
-    
+};
+
+//TC: O(N*M)
+//SC: O((n - 1) + (m - 1)) + O(N * M)
+//          Path Length     For DP array
+
+//Tabulation : 
+
+// To remove the recurssion stack space
+
+
+
