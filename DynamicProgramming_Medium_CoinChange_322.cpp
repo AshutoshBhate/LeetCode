@@ -25,7 +25,8 @@ public:
             int result = min_steps(coins, amount - coins[i], myMap);
             if(result != INT_MAX)
             {
-                minimum = min(minimum, 1 + result);
+                result += 1;
+                minimum = min(minimum, result);
             }
         }
 
