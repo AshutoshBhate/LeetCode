@@ -9,7 +9,7 @@ public:
         cout.tie(nullptr);
         ios::sync_with_stdio(0);
 
-        auto it = haystack.find(needle);    //it here doesn't point like an iterator, it instead returns the  
+        auto it = haystack.find(needle);    //'it' here doesn't point like an iterator, it instead returns the  
         if(it != string::npos)              //integer index of first occurence         
         {
             return it;
