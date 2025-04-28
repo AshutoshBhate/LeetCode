@@ -71,9 +71,9 @@ public:
         }
 
         // Transfer subsets from set to result vector
-        for (auto &s : unique)
+        for (auto iter : unique)
         {
-            result.push_back(s);
+            result.push_back(iter);
         }
         
         return result;
