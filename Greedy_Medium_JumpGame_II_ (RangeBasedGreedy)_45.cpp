@@ -1,26 +1,24 @@
-//ChatGPT Solution : 
-
 class Solution {
 public:
     int jump(vector<int>& nums)
     {
-        int n = nums.size();
+        int jumps = 0;
+        int maxReachable = 0;
+        int currEnd = 0;
 
-        int jumpsCount = 0;
-        int currentLimit = 0;
-        int nextLimit = 0;
-
-        for (int index = 0; index < n - 1; index++)
+        for(int i = 0; i < nums.size() - 1; i++)
         {
-            nextLimit = max(nextLimit, index + nums[index]);
-
-            if (index == currentLimit)
+            if(i + nums[i] > maxReachable)
             {
-                jumpsCount++;
-                currentLimit = nextLimit;
+                maxReachable = i + nums[i];
+            }
+            if(i == currEnd)
+            {
+                jumps += 1;
+                currEnd = maxReachable;
             }
         }
-        
-        return jumpsCount;
+
+        return jumps;
     }
 };
