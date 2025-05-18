@@ -54,14 +54,19 @@ class Solution {
   
     int helper(int index, int sum, vector<int>& arr, vector<vector<int>>& dp)
     {
-        if(sum == 0)
-        {
-            return 1;
-        }
+        
         
         if(index == 0)
         {
-            return arr[0] == sum ? 1 : 0;
+            if(sum == 0 && arr[0] == 0)
+            {
+                return 2;
+            }
+            if(sum == 0 || sum == arr[0])
+            {
+                return 1;
+            }
+            return 0;
         }
         
         if(dp[index][sum] != -1)
@@ -104,11 +109,11 @@ class Solution {
 
         if(arr[0] == 0)
         {
-            dp[0][0] = 2; // pick or not pick
+            dp[0][0] = 2; // Pick or Not Pick, this condition is needed only when in the constraints, it is written that numbers will be starting from 0 and not 1
         }
         else
         {
-            dp[0][0] = 1; // only not pick
+            dp[0][0] = 1; // only Not Pick
             if(arr[0] <= target)
             {
                 dp[0][arr[0]] = 1; // pick
