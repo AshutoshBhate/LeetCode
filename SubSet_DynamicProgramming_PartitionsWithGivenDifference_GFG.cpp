@@ -1,60 +1,15 @@
+//S1 - S2 = D
+//S1 = TotalSum - S2
+//TotalSum - S2 - S2 = D
+//S2 = (TotalSum - D) / 2
+//Hence we have to find subsets with this sum. That is the answer!
+
 //Memoization : 
 
-//Style A : Cannot be mapped to Tabulation directly:
-
-//As we are going from 0 to n - 1, the additional base cases aren't needed (The 0th element might be 0 so we have to return 2 choices, etc.)
-
 class Solution {
   public:
-  
-    int helper(int index, vector<int>& arr, int target, int sum, vector<vector<int>>& dp)
-    {
-        if(target == sum && index == arr.size())
-        {
-            return 1;
-        }
-        if(index == arr.size())
-        {
-            return 0;
-        }
-        
-        if (sum > target)
-        {
-            return 0;
-        }
-        
-        if(dp[index][sum] != -1)
-        {
-            return dp[index][sum];
-        }
-        
-        //Pick
-        int Pick = helper(index + 1, arr, target, sum + arr[index], dp);
-        
-        //Not Pick
-        int notPick = helper(index + 1, arr, target, sum, dp);
-        
-        return dp[index][sum] = Pick + notPick;
-        
-    }
-  
-    int perfectSum(vector<int>& arr, int target)
-    {
-        int n = arr.size();
-        int count = 0, sum = 0;
-        
-        vector<vector<int>> dp(n, vector<int>(target + 1, -1));
-        
-        return helper(0, arr, target, sum, dp);
-    }
-};
 
-//Style B : Can be mapped to Tabulation directly:
-
-//Here as we are coming from n - 1 to 0, we need additional checks for checking whether the 0th element might have 0 so we need to return 2
-
-class Solution {
-  public:
+    int mod = (int)(1e9 + 7);
   
     int helper(int index, int sum, vector<int>& arr, vector<vector<int>>& dp)
     {
@@ -86,15 +41,29 @@ class Solution {
             pick = helper(index - 1, sum - arr[index], arr, dp);
         }
         
-        return dp[index][sum] = pick + notPick;
+        return dp[index][sum] = pick + notPick % mod;
     }
-  
-    int perfectSum(vector<int>& arr, int target)
+
+
+    int countPartitions(vector<int>& arr, int d)
     {
         int n = arr.size();
-        vector<vector<int>> dp(n, vector<int>(target + 1, -1));
         
-        return helper(n - 1, target, arr, dp);
+        int totSum = 0;
+
+        for(auto it : arr)
+        {
+            totSum += it;
+        }
+
+        if(totSum - d < 0 || (totSum - d) % 2)
+        {
+            return false;
+        }
+
+        vector<vector<int>> dp(n, vector<int>(((totSum - d) / 2) + 1, -1));
+
+        return helper(n - 1, (totSum - d) / 2, arr, dp); 
     }
 };
 
@@ -102,10 +71,27 @@ class Solution {
 
 class Solution {
   public:
+
+    int mod = (int)(1e9 + 7);
   
-    int perfectSum(vector<int>& arr, int target)
+    int countPartitions(vector<int>& arr, int d)
     {
+        
         int n = arr.size();
+        
+        int totSum = 0;
+
+        for(auto it : arr)
+        {
+            totSum += it;
+        }
+
+        if(totSum - d < 0 || (totSum - d) % 2)
+        {
+            return 0;
+        }
+        
+        int target = (totSum - d) / 2;
 
         vector<vector<int>> dp(n, vector<int>(target + 1, 0));
 
@@ -136,7 +122,7 @@ class Solution {
                     pick = dp[i - 1][j - arr[i]];
                 }
         
-                dp[i][j] = pick + notPick;
+                dp[i][j] = (pick + notPick) % mod; 
             }
         }
         
@@ -144,19 +130,36 @@ class Solution {
     }
 };
 
-//Space Optimization : 
+//Space Optimization :
 
 class Solution {
   public:
+
+    int mod = (int)(1e9 + 7);
   
-    int perfectSum(vector<int>& arr, int target)
+    int countPartitions(vector<int>& arr, int d)
     {
+        
         int n = arr.size();
+        
+        int totSum = 0;
+
+        for(auto it : arr)
+        {
+            totSum += it;
+        }
+
+        if(totSum - d < 0 || (totSum - d) % 2)
+        {
+            return 0;
+        }
+        
+        int target = (totSum - d) / 2;
 
         vector<int> prev(target + 1, 0);
         vector<int> curr(target + 1, 0);
 
-        if(arr[0] == 0)
+       if(arr[0] == 0)
         {
             prev[0] = 2; // pick or not pick
         }
