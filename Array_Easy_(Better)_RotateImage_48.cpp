@@ -5,6 +5,7 @@ public:
         cin.tie(nullptr);
         cout.tie(nullptr);
         ios::sync_with_stdio(false);
+        
         int space = 0;
         for(int i = 0; i < matrix.size(); i++)
         {
