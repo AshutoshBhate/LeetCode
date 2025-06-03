@@ -36,6 +36,9 @@ public:
     }
 };
 
+//TC: O(N * M)
+//SC: O(N * M) + O(N + M) Auxiliary Stack Space 
+
 //Tabulation : 
 
 class Solution {
@@ -47,6 +50,16 @@ public:
         int n = text2.size();
 
         vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+
+        for(int i = 0; i < n + 1; i++)
+        {
+            dp[0][i] = 0;
+        }
+
+        for(int j = 0; j < m + 1; j++)
+        {
+            dp[j][0] = 0;
+        }
 
         for(int i = 1; i <= m; i++)
         {
