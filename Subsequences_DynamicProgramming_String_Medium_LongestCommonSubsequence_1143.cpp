@@ -27,12 +27,12 @@ public:
 
     int longestCommonSubsequence(string text1, string text2)
     {
-        int index_1 = text1.size() - 1;
-        int index_2 = text2.size() - 1;
+        int index_1 = text1.size();
+        int index_2 = text2.size();
 
-        vector<vector<int>> dp(index_1 + 1, vector<int>(index_2 + 1, -1));
+        vector<vector<int>> dp(index_1, vector<int>(index_2, -1));
 
-        return helper(text1, text2, index_1, index_2, dp);    
+        return helper(text1, text2, index_1 - 1, index_2 - 1, dp);    
     }
 };
 
