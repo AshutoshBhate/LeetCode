@@ -25,7 +25,7 @@ public:
         return dp[index_1][index_2];
     }
 
-    int longestPalindromeSubseq(string s)
+    int minInsertions(string s)
     {
         cin.tie(nullptr);
         cout.tie(nullptr);
@@ -43,16 +43,15 @@ public:
 
         vector<vector<int>> dp(m, vector<int>(n, - 1));
 
-        return helper(m - 1, n - 1, s, reverse_s, dp);
+        return s.size() - helper(m - 1, n - 1, s, reverse_s, dp);    
     }
 };
 
-//Tabulation : 
+//Tabulaton : 
 
 class Solution {
 public:
-
-    int longestPalindromeSubseq(string s)
+    int minInsertions(string s)
     {
         cin.tie(nullptr);
         cout.tie(nullptr);
@@ -95,7 +94,7 @@ public:
             }
         }
 
-        return dp[m][n];
+        return s.size() - dp[m][n];    
     }
 };
 
@@ -103,8 +102,7 @@ public:
 
 class Solution {
 public:
-
-    int longestPalindromeSubseq(string s)
+    int minInsertions(string s)
     {
         cin.tie(nullptr);
         cout.tie(nullptr);
@@ -145,6 +143,6 @@ public:
             prev = curr;
         }
 
-        return prev[n];
+        return s.size() - prev[n];    
     }
 };
