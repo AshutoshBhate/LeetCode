@@ -1,3 +1,5 @@
+//My Solution : 
+
 class Solution {
 public:
     int majorityElement(vector<int>& nums)
@@ -10,6 +12,7 @@ public:
         {
             majority_map[nums[i]]++;
         }
+
         for(iter = majority_map.begin(); iter != majority_map.end(); iter++)
         {
             if((*iter).second > limit_no)
@@ -17,6 +20,9 @@ public:
                 return (*iter).first;
             }
         }
+
         return 0;
     }
 };
+
+//Striver Solution : Boyer-Moore Majority Vote Algorithm
