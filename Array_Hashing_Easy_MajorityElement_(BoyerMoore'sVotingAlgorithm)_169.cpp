@@ -37,10 +37,10 @@ public:
         {
             if(count == 0)
             {
+                count = 1;
                 element = nums[i];
             }
-
-            if(nums[i] == element)
+            else if(nums[i] == element)
             {
                 count++;
             }
