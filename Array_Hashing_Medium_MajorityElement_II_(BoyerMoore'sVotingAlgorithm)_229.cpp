@@ -42,7 +42,9 @@ public:
         ios::sync_with_stdio(false);
 
         int element_1 = 0, element_2 = 0, count_1 = 0, count_2 = 0;
+
         vector<int> answer;
+        
         int boundary = nums.size()/3, master_count_1 = 0, master_count_2 = 0;
 
         for(int i = 0; i < nums.size(); i++)
