@@ -6,18 +6,18 @@ class Solution {
     {
         map<int, int> PreSumMap;
         
-        int PreSum = 0, len = 0, max_length = 0;
+        int PrefixSum = 0, len = 0, max_length = 0;
         
         for(int i = 0; i < arr.size(); i++)
         {
-            PreSum += arr[i];
+            PrefixSum += arr[i];
             
-            if(PreSum == k)
+            if(PrefixSum == k)
             {
                 max_length = max(max_length, i + 1);
             }
             
-            long long remaining = PreSum - k;
+            long long remaining = PrefixSum - k;
             
             if(PreSumMap.find(remaining) != PreSumMap.end())
             {
@@ -25,9 +25,9 @@ class Solution {
                 max_length = max(max_length, len);
             }
             
-            if(PreSumMap.find(PreSum) == PreSumMap.end())
+            if(PreSumMap.find(PrefixSum) == PreSumMap.end())
             {
-                PreSumMap[PreSum] = i;
+                PreSumMap[PrefixSum] = i;
             }
         }
         
@@ -40,7 +40,7 @@ class Solution {
 //SC: O(N)
 
 
-//Now the optimal solution for all positives and zeros :
+//Now the optimal solution for only positives and zeros :
 
 class Solution {
   public:
@@ -75,6 +75,3 @@ class Solution {
 
 //TC: O(2N)
 //SC: O(1)
-
-
-
