@@ -20,7 +20,7 @@ public:
         PreSumMap[0] = 1; 
 
         for (int i = 0; i < array_size; i++) {
-            // add current element to prefix Sum:
+            // Add current element to prefix Sum:
             PrefixSum += nums[i];
 
             // Calculate x-k:
