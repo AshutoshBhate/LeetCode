@@ -1,22 +1,23 @@
-/*struct node {
-  int data;
-  struct node *left;
-  struct node *right;
+/* 
+struct node {
+    int data;
+    struct node *left;
+    struct node *right;
 };
 
 struct node *newNode(int data) {
-  struct node *node = (struct node *)malloc(sizeof(struct node));
-
-  node->data = data;
-
-  node->left = NULL;
-  node->right = NULL;
-  return (node);
-}*/
+    struct node *node = (struct node *)malloc(sizeof(struct node));
+    node->data = data;
+    node->left = NULL;
+    node->right = NULL;
+    return node;
+}
+*/
 
 class Solution {
 public:
-    void create_tree(node* root0, vector<int>& vec) {
+    void create_tree(node* root0, vector<int>& vec)
+    {
         // Create nodes for the tree
         node* node1 = newNode(vec[1]);
         node* node2 = newNode(vec[2]);
