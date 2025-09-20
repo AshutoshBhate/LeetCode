@@ -1,3 +1,5 @@
+//BFS Solution : 
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -67,5 +69,53 @@ public:
         }
 
         return root;
+    }
+};
+
+//DFS Solution : 
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+
+    void DFS(TreeNode* node1, TreeNode* node2, int level)
+    {
+        if(node1 == NULL)
+        {
+            return;
+        }
+
+        if(level % 2 != 0)
+        {
+            swap(node1 -> val, node2 -> val);
+        }
+
+        DFS(node1 -> right, node2 -> left, level + 1);
+        DFS(node1 -> left, node2 -> right, level + 1);
+    }
+
+    TreeNode* reverseOddLevels(TreeNode* root)
+    {
+        cin.tie(nullptr);
+        cout.tie(nullptr);
+        ios::sync_with_stdio(false);
+
+        if(root == NULL)
+        {
+            return NULL;
+        }
+
+        DFS(root -> left, root -> right, 1);
+        return root;    
     }
 };
