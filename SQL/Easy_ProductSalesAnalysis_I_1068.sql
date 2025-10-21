@@ -1,1 +1,8 @@
-SELECT product_name, year, price from Sales inner join Product where Sales.product_id = Product.product_id;
+SELECT 
+    product_name, year, price 
+FROM 
+    Sales 
+INNER JOIN 
+    Product 
+WHERE 
+    Sales.product_id = Product.product_id;

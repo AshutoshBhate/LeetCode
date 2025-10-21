@@ -1,8 +1,10 @@
-select 
+SELECT
     P.firstname, P.lastName, A.city, A.state 
-from 
+FROM 
     Person as P 
-left outer join 
-    Address as A 
-on 
+LEFT OUTER JOIN 
+    Address 
+AS 
+    A 
+ON 
     P.personId = A.personId;

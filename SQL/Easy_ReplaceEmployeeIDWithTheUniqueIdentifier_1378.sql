@@ -1,1 +1,8 @@
-SELECT EmployeeUNI.unique_id, Employees.name from EmployeeUNI right outer join Employees on Employees.id = EmployeeUNI.id;
+SELECT 
+    EmployeeUNI.unique_id, Employees.name 
+FROM 
+    EmployeeUNI 
+RIGHT OUTER JOIN 
+    Employees 
+ON 
+    Employees.id = EmployeeUNI.id;
