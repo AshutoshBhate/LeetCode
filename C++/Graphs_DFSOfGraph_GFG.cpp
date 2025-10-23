@@ -1,28 +1,29 @@
-class Solution{
-    private:
-        void DFS(int node, vector<vector<int>>& adj, vector<int>& visit_array, vector<int>& DFS_answer)
+class Solution {
+  public:
+  
+    void dfs_helper(int node, vector<vector<int>>& adj, vector<int>& visited_array, vector<int>& DFS_Answer)
+    {
+        visited_array[node] = 1;
+        DFS_Answer.push_back(node);
+        
+        for(auto it : adj[node])
         {
-            visit_array[node] = 1;
-            DFS_answer.push_back(node);
-
-            //Traverse all it's neighbours
-            for(auto iter : adj[node])
+            if(!visited_array[it])
             {
-                if(!visit_array[iter])
-                {
-                    DFS(iter, adj, visit_array, DFS_answer);
-                }
+                dfs_helper(it, adj, visited_array, DFS_Answer);
             }
         }
-
-    public:
-        //Function to return a list containing the DFS traversal of the graph
-        vector<int> dfsOfGraph(vector<vector<int>>& adj)
-        {
-            vector<int> visit_array(adj.size(), 0);
-            int start = 0;
-            vector<int> DFS_answer;
-            DFS(start, adj, visit_array, DFS_answer);
-            return DFS_answer;
-        }
+    }
+  
+    vector<int> dfs(vector<vector<int>>& adj) 
+    {
+        vector<int> visited_array(adj.size(), 0);
+        vector<int> DFS_Answer;
+        
+        int node = 0;
+        
+        dfs_helper(node, adj, visited_array, DFS_Answer);
+        
+        return DFS_Answer;
+    }
 };
