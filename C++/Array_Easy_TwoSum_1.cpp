@@ -64,3 +64,34 @@ public:
         return myVector;
     }
 };
+
+//My Solution : 
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target)
+    {
+        map<int, int> myMap;
+        vector<int> answer;
+
+        for(int i = 0; i < nums.size(); i++)
+        {
+            int complement = target - nums[i];
+            auto it = myMap.find(complement);
+
+            if(it == myMap.end())
+            {
+                myMap[nums[i]] = i;
+            }
+            else
+            {
+                answer.push_back(myMap[complement]);
+                answer.push_back(i);
+                break;
+            }
+
+        }    
+
+        return answer;
+    }
+};

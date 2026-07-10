@@ -66,7 +66,7 @@ public:
     }
 };
 
-//TC: O(N^2) + O(log N)
+//TC: O(N^2 * log N)
 //SC: O(N^2) Worst Case
 
 //Optimal Approach :
