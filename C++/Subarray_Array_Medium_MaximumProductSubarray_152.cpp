@@ -1,62 +1,22 @@
-//Two Loop Solution : 
-
 class Solution {
 public:
-    int maxProduct(vector<int>& nums)
+    int maxProduct(vector<int>& nums) 
     {
-        int max_num = INT_MIN, prefix = 1, suffix = 1;
+        int maxCount = nums[0];
+        int count_p = nums[0];
+        int count_n = nums[0];
 
-        for(int i = 0; i < nums.size(); i++)
+        for(int i = 1; i < nums.size(); i++)
         {
-            if(prefix == 0)
-            {
-                prefix = 1;
-            }
-            prefix *= nums[i];
-            max_num = max(prefix, max_num); 
+            int curr = nums[i];
+            int temp = count_p;
+
+            count_p = max(curr, max(temp*curr, count_n*curr));
+            count_n = min(curr, min(temp*curr, count_n*curr));
+
+            maxCount = max(count_p, maxCount);
         }
 
-        for(int i = nums.size() - 1; i >= 0; i--)
-        {
-            if(suffix == 0)
-            {
-                suffix = 1;
-            }
-            suffix *= nums[i];
-            max_num = max(suffix, max_num);
-        }    
-
-        return max_num;
-    }
-};
-
-//Single Loop :
-
-class Solution {
-public:
-    int maxProduct(vector<int>& nums)
-    {
-        cin.tie(nullptr);
-        cout.tie(nullptr);
-        ios::sync_with_stdio(false);
-
-        int max_num = INT_MIN, prefix = 1, suffix = 1;
-
-        for(int i = 0; i < nums.size(); i++)
-        {
-            if(prefix == 0)
-            {
-                prefix = 1;
-            }
-            if(suffix == 0)
-            {
-                suffix = 1;
-            }
-            prefix *= nums[i];
-            suffix *= nums[nums.size() - 1 - i];
-            max_num = max(max_num, max(prefix, suffix)); 
-        }  
-
-        return max_num;
+        return maxCount;
     }
 };
