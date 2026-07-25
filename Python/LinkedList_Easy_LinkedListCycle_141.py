@@ -1,18 +1,21 @@
 # Definition for singly-linked list.
 # class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
 class Solution:
-    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
         tortoise = head
         rabbit = head
 
         while rabbit != None and rabbit.next != None:
             tortoise = tortoise.next
             rabbit = rabbit.next.next
+            
+            if tortoise == rabbit:
+                return True
         
-        return tortoise
+        return False
 
         
