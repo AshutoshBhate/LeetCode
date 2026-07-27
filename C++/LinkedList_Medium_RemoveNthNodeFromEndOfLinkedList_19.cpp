@@ -1,3 +1,5 @@
+//Brute Force Method : 
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -54,3 +56,41 @@ public:
         return head;
     }
 };
+
+/*
+// Optimal Method (One Pass - Two Pointers) :
+
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n)
+    {
+        cin.tie(nullptr);
+        cout.tie(nullptr);
+        ios::sync_with_stdio(false);
+
+        ListNode* dummy = new ListNode(0, head);
+        ListNode* fast = dummy;
+        ListNode* slow = dummy;
+
+        for(int i = 0; i < n; i++)
+        {
+            fast = fast -> next;
+        }
+
+        while(fast -> next != NULL)
+        {
+            fast = fast -> next;
+            slow = slow -> next;
+        }
+
+        ListNode* toDelete = slow -> next;
+        slow -> next = slow -> next -> next;
+        delete toDelete;
+
+        ListNode* newHead = dummy -> next;
+        delete dummy;
+
+        return newHead;
+    }
+};
+*/
