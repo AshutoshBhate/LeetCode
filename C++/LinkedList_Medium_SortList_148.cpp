@@ -47,6 +47,8 @@ public:
     }
 };
 
+// Optimal Approach : 
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
