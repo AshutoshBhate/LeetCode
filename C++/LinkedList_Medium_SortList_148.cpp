@@ -1,4 +1,4 @@
-//Brute-Force Approach : 
+//Brute-Force Approach : My Approach
 
 /**
  * Definition for singly-linked list.
