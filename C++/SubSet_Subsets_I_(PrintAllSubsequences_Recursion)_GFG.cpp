@@ -28,14 +28,11 @@ class Solution {
   
     vector<vector<int>> subsets(vector<int>& arr)
     {
-        sort(arr.begin(), arr.end());
         
         vector<vector<int>> ans;
         vector<int> ds;
         
         helper(0, ans, ds, arr);
-        
-        sort(ans.begin(), ans.end());
         
         return ans;
     }
