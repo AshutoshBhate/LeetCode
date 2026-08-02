@@ -8,7 +8,6 @@ class Solution:
         if head == None or head.next == None:
             return head
 
-
         counter = head.next
         odd = head
         even = head.next
