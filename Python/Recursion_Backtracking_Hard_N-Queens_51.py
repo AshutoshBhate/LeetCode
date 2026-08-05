@@ -20,6 +20,7 @@ class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
         answer = []
         board = [["." for _ in range(n)] for _ in range(n)]
+        
 
         leftRow = [0] * n
         upperDiagonal = [0] * (2 * n - 1)
