@@ -11,8 +11,6 @@ class Solution:
 
         return totalDegree, got_a_node
 
-
-
     def countCompleteComponents(self, n: int, edges: List[List[int]]) -> int:
         visited_array = [0] * n
         totalDegree = 0
