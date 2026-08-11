@@ -1,3 +1,13 @@
+/*
+ * Key Pattern: Circular Array + Direct Indexing
+ * - Constraints: 
+ *   1. Elements CAN REPEAT (duplicates allowed -> direct answers[i] indexing, no Hash Map).
+ *   2. Array is CIRCULAR (wraps around to index 0).
+ * - Strategy:
+ *   - Simulate circular array by doubling array size (or looping 2*N times using i % N).
+ *   - Assign result directly to next_greater_element[i] by position to handle duplicates.
+ */
+
 class Solution {
 public:
     vector<int> nextGreaterElements(vector<int>& nums)

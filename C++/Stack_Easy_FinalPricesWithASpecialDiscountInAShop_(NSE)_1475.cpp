@@ -14,6 +14,14 @@ Phase 3: Previous Smaller Element (PSE)  ──► Flips both (left + smaller)
 Phase 4: Combined Bounds (NSE + PSE)  ──► The interview standard (Histogram & Subarrays)
 */
 
+/*
+ * Key Pattern: Direct Index-based Result Assignment
+ * - Constraint: Elements CAN REPEAT (duplicates allowed).
+ * - Why Direct Indexing: Since we output results for the same array in 1-to-1 order,
+ *   we store results directly into answers[i].
+ * - Note: Direct index assignment bypasses hash map key collisions when numbers repeat.
+ */
+
 class Solution {
 public:
     vector<int> finalPrices(vector<int>& prices) 

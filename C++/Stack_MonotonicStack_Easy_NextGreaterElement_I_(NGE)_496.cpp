@@ -1,3 +1,11 @@
+/*
+ * Key Pattern: Value-based Mapping (Hash Map)
+ * - Constraint: Elements in both arrays are UNIQUE (non-repeating).
+ * - Why Hash Map: We map nums2[i] -> next_greater_element[i] so we can answer 
+ *   queries for nums1 elements in O(1) time.
+ * - Note: Hash map ONLY works because values are unique (no key collisions).
+ */
+
 class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2)
