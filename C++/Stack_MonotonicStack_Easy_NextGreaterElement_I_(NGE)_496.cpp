@@ -1,9 +1,10 @@
 /*
- * Key Pattern: Value-based Mapping (Hash Map)
- * - Constraint: Elements in both arrays are UNIQUE (non-repeating).
- * - Why Hash Map: We map nums2[i] -> next_greater_element[i] so we can answer 
- *   queries for nums1 elements in O(1) time.
- * - Note: Hash map ONLY works because values are unique (no key collisions).
+ * Key Pattern: Two-Array Query Problem (Hash Map)
+ * - Phase: Next Greater Element (NGE) -> Right-to-Left Traversal
+ * - Why Hash Map: The problem gives us a main array (nums2) and a random query array (nums1).
+ *   We map value -> answer so we can answer nums1 queries in O(1) time.
+ * - Note: This is an EXCEPTION. It only works because the problem guarantees unique values.
+ *   For single-array problems, always use direct indexing.
  */
 
 class Solution {

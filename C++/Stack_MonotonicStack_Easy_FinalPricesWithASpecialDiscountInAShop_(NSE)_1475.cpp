@@ -15,11 +15,12 @@ Phase 4: Combined Bounds (NSE + PSE)  ──► The interview standard (Histogra
 */
 
 /*
- * Key Pattern: Direct Index-based Result Assignment
- * - Constraint: Elements CAN REPEAT (duplicates allowed).
- * - Why Direct Indexing: Since we output results for the same array in 1-to-1 order,
- *   we store results directly into answers[i].
- * - Note: Direct index assignment bypasses hash map key collisions when numbers repeat.
+ * Key Pattern: Single-Array Problem (Direct Indexing)
+ * - Phase 1: Next Smaller Element (NSE) -> Right-to-Left Traversal
+ * - Why Direct Indexing: We are evaluating and outputting results for a single array. 
+ *   Storing results directly into answers[i] is the UNIVERSAL STANDARD.
+ * - Note: This is faster, uses less memory, and perfectly handles duplicate numbers 
+ *   because it relies on fixed indices, not values.
  */
 
 class Solution {
