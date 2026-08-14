@@ -1,20 +1,4 @@
 /*
-[NGE] (Already completed)
-  │
-  ▼
-Phase 1: Next Smaller Element (NSE) (Doing it in this code)  ──► Keeps direction (right), flips operator
-  │
-  ▼
-Phase 2: Previous Greater Element (PGE)  ──► Keeps condition (greater), flips direction (left)
-  │
-  ▼
-Phase 3: Previous Smaller Element (PSE)  ──► Flips both (left + smaller)
-  │
-  ▼
-Phase 4: Combined Bounds (NSE + PSE)  ──► The interview standard (Histogram & Subarrays)
-*/
-
-/*
  * Key Pattern: Single-Array Problem (Direct Indexing)
  * - Phase 1: Next Smaller Element (NSE) -> Right-to-Left Traversal
  * - Why Direct Indexing: We are evaluating and outputting results for a single array. 

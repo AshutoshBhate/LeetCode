@@ -26,7 +26,7 @@ public:
 
         for(int i = 0; i < n; i++)
         {
-            while(!myStack.empty() && arr[myStack.top()] >= arr[i])
+            while(!myStack.empty() && arr[i] <= arr[myStack.top()])
             {
                 myStack.pop();
             }

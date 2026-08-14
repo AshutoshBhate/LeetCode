@@ -1,4 +1,20 @@
 /*
+[NGE] (Already completed)
+  │
+  ▼
+Phase 1: Next Smaller Element (NSE)  ──► Keeps direction (right), flips operator
+  │
+  ▼
+Phase 2: Previous Greater Element (PGE)  ──► Keeps condition (greater), flips direction (left)
+  │
+  ▼
+Phase 3: Previous Smaller Element (PSE)  ──► Flips both (left + smaller)
+  │
+  ▼
+Phase 4: Combined Bounds (NSE + PSE)  ──► The interview standard (Histogram & Subarrays)
+*/
+
+/*
  * Key Pattern: Two-Array Query Problem (Hash Map)
  * - Phase: Next Greater Element (NGE) -> Right-to-Left Traversal
  * - Why Hash Map: The problem gives us a main array (nums2) and a random query array (nums1).
@@ -19,7 +35,7 @@ public:
 
         for (int i = nums2.size() - 1; i >= 0; i--)
         {
-            while(!myStack.empty() && myStack.top() <= nums2[i])
+            while(!myStack.empty() && nums2[i] >= myStack.top())
             {
                 myStack.pop();
             }

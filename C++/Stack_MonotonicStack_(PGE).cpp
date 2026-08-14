@@ -20,7 +20,7 @@ public:
 
         for(int i = 0; i < nums.size(); i++)
         {
-            while(!myStack.empty() && myStack.top() <= nums[i])
+            while(!myStack.empty() && nums[i] >= myStack.top())
             {
                 myStack.pop();
             }
