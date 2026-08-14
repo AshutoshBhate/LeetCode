@@ -1,15 +1,71 @@
 /*
- * Key Pattern: Single-Array Problem (Direct Indexing) & Subarray Bounds
- * - Phase: Combined Previous Smaller Element (PSE) & Next Smaller Element (NSE)
- * - Why Indices: We need the distance between the current element and its bounds 
- *   to calculate how many subarrays it dominates as the minimum. 
- * - Note on Duplicates: To avoid double-counting subarrays with duplicate minimums 
- *   (e.g., [2, 2]), we pop ">=" for PSE (finding strictly smaller) and ">" for NSE 
- *   (finding smaller or equal).
+ * Problem: Sum of Subarray Minimums (LeetCode 907)
+ * Pattern: Monotonic Stack with Subarray Bounds
+ *
+ * Key Concepts:
+ * 1. Index-Based Stack: We push array indices (i) to calculate distance 
+ *    spans: left_count = i - pse[i] and right_count = nse[i] - i.
+ * 2. Virtual Boundaries:
+ *    - Default PSE = -1 (extends reach to the left boundary).
+ *    - Default NSE =  n (extends reach to the right boundary).
+ * 3. Asymmetric Bounds for Duplicates:
+ *    - PSE finds Previous STRICTLY Smaller Element (<) by popping stack top >= arr[i].
+ *    - NSE finds Next Smaller OR EQUAL Element (<=) by popping stack top > arr[i].
+ *    - This asymmetry breaks ties for duplicate values (e.g., [2, 2]) and 
+ *      prevents double-counting subarrays.
  */
 
 class Solution {
 public:
+
+    vector<int> findNSE(int n, vector<int>& arr)
+    {
+        stack<int> myStack;
+        vector<int> answer(n, n);
+
+        for(int i = n - 1; i >= 0; i--)
+        {
+            while(!myStack.empty() && arr[i] < arr[myStack.top()])
+            {
+                myStack.pop();
+            }
+
+            if(myStack.empty())
+            {
+                myStack.push(i);
+                continue;
+            }
+            answer[i] = myStack.top();
+            myStack.push(i);
+        }
+
+        return answer;
+    }
+
+    vector<int> findPSE(int n, vector<int>& arr)
+    {
+        stack<int> myStack;
+        vector<int> answer(n, -1);
+
+        for(int i = 0; i < n; i++)
+        {
+            while(!myStack.empty() && arr[i] <= arr[myStack.top()])
+            {
+                myStack.pop();
+            }
+
+            if(myStack.empty())
+            {
+                myStack.push(i);
+                continue;
+            }
+            answer[i] = myStack.top();
+            myStack.push(i);
+        }
+
+        return answer;
+    }
+
     int sumSubarrayMins(vector<int>& arr) 
     {
         cin.tie(nullptr);
@@ -19,43 +75,8 @@ public:
         int n = arr.size();
         long long MOD = 1e9 + 7;
         
-        vector<int> pse(n, -1);
-        vector<int> nse(n, n); 
-        
-        stack<int> myStack;
-
-        for(int i = 0; i < n; i++)
-        {
-            while(!myStack.empty() && arr[i] <= arr[myStack.top()])
-            {
-                myStack.pop();
-            }
-
-            if(!myStack.empty())
-            {
-                pse[i] = myStack.top();
-            }
-            myStack.push(i);
-        }
-
-        while(!myStack.empty())
-        {
-            myStack.pop();
-        }
-
-        for(int i = n - 1; i >= 0; i--)
-        {
-            while(!myStack.empty() && arr[myStack.top()] > arr[i])
-            {
-                myStack.pop();
-            }
-
-            if(!myStack.empty())
-            {
-                nse[i] = myStack.top();
-            }
-            myStack.push(i);
-        }
+        vector<int> pse = findPSE(n, arr);
+        vector<int> nse = findNSE(n, arr); 
 
         long long total_sum = 0;
 
