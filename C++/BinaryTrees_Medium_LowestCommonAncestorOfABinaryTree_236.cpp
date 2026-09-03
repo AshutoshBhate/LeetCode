@@ -35,7 +35,13 @@ public:
         {
             return root;
         }
-
-        return (left != NULL) ? left : right;
+        else if(left == NULL)
+        {
+            return right;
+        }
+        else
+        {
+            return left;
+        }
     }
 };

@@ -26,5 +26,7 @@ class Solution:
 
         if left and right:
             return root
-
-        return left if left else right
+        elif not left:
+            return right
+        else: 
+            return left
