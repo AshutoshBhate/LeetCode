@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
 
-    maxDepthNumber = float(-inf)
+    maxDepthNumber = float('-inf')
 
     def helper(self, root, currMax):
         if root == None:
