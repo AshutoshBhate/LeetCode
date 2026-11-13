@@ -9,7 +9,7 @@ class Solution:
                     array = [i, j]
         return array
     
-# Actual Two Sum Method : 
+# Actual with enumerate : 
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -23,3 +23,21 @@ class Solution:
             
             else:
                 seen_dict[number] = i
+                
+# Actual my new solution : 
+                
+class Solution:
+    def twoSum(self, nums: list[int], target: int) -> list[int]:
+        complement_dict = defaultdict(int)
+
+        for i in range(0, len(nums)):
+            if nums[i] not in complement_dict:
+                complement = target - nums[i]
+                complement_dict[complement] = i
+            else:
+                return [complement_dict[nums[i]], i]
+
+        return []
+
+        
+        
