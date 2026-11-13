@@ -1,24 +1,26 @@
 # Better Approach : 
-
+    
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
-        tuple_storing_set = set()
 
+        tuple_storing_set = set()
 
         for i in range(0, len(nums)):
             seen = set()
+
             for j in range(i + 1, len(nums)):
-                
+                complement = -1 * (nums[i] + nums[j])
 
-                complement = -(nums[i] + nums[j])
-                if complement not in seen:
-                    seen.add(nums[j])
+                if complement in seen:
+                    triplet = tuple(sorted([nums[i], nums[j], complement]))
+                    tuple_storing_set.add(triplet)
+
                 else:
-                    triplet = sorted([nums[i], nums[j], complement])
-                    tuple_storing_set.add(tuple(triplet))
+                    seen.add(nums[j])
 
-        return [list(t) for t in tuple_storing_set]
-    
+        return [list(i) for i in tuple_storing_set]
+
+        
 # TC: O(N^2)
 # SC: O(N^2) Worst Case
 
