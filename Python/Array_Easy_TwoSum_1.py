@@ -17,13 +17,13 @@ class Solution:
 
         for i, number in enumerate(nums):
             complement = target - number
-
-            if complement in seen_dict:
-                return [seen_dict[complement], i]
-            
+            if number in seen_dict:
+                return [seen_dict[number], i]
             else:
-                seen_dict[number] = i
-                
+                seen_dict[complement] = i
+
+        return []
+
 # Actual my new solution : 
                 
 class Solution:
