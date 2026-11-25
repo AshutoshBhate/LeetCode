@@ -1,3 +1,0 @@
-ans = input()
-
-print(ans, type(ans))
